@@ -23,51 +23,28 @@ sequelize
     console.error('Unable to connect to the database:', err);
 });
 
-var WebUser = sequelize.define('user', {
+var User = sequelize.define('user', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true
     },
     username: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
     },
-    password: {
+    sPictureUrl: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: true
     },
+    bPictureUrl: {
+        type: Sequelize.STRING,
+        allowNull: true
+    }
   // ADD MORE ATTRIBUTES HERE
-});
-
-var KakaoUser = sequelize.define('kakaouser', {
-    kakaoid: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-    }
-});
-
-var LineUser = sequelize.define('lineuser', {
-    lineid: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-    }
 });
 
 module.exports = {
     sequelize,
-    WebUser,
-    KakaoUser,
-    LineUser
+    User
 };

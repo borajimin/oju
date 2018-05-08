@@ -35,12 +35,12 @@
     "passport": "^0.4.0",
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
-    "pg": "^7.4.1",
+    "pg": "^6.4.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "sequelize": "^4.29.0"
+    "sequelize": "^4.26.0"
   },
   "devDependencies": {
     "webpack": "^3.10.0",
