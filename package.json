@@ -20,6 +20,7 @@
   "author": "Deb",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -39,7 +40,12 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.6",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
+    "redux-connect": "^7.0.0",
+    "redux-implicit-oauth2": "^1.2.1",
+    "redux-oauth": "^2.0.8",
+    "redux-thunk": "^2.3.0",
     "sequelize": "^4.26.0"
   },
   "devDependencies": {

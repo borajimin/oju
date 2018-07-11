@@ -23,7 +23,7 @@ sequelize
     console.error('Unable to connect to the database:', err);
 });
 
-var User = sequelize.define('user', {
+var Member = sequelize.define('member', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -46,5 +46,5 @@ var User = sequelize.define('user', {
 
 module.exports = {
     sequelize,
-    User
+    Member
 };

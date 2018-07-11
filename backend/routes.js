@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../sequelize/models');
+const { Member } = require('../sequelize/models');
 const bcrypt = require('bcryptjs');
 let hashedPassword;
 
@@ -15,7 +15,9 @@ module.exports = () => {
         }
     });
     //get route to show the dashboard
-
+    router.get("/dashboard", (req, res) => {
+        res.json(req.user);
+    });
     //get route to show pictures.
 
     //post route to resize & post pictures.
@@ -25,7 +27,7 @@ module.exports = () => {
     //post route to auth 공동체 members
 
     router.use('/users', (req, res) => {
-        res.json({ success: true });
+        res.send(req.user);
     });
 
     router.get('/logout', (req, res) => {

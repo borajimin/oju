@@ -8,7 +8,11 @@ let RetreatContainer = ({ name, testAction, content }) => {
     return (
         <div>
             <h1>App works!</h1>
-            <Retreat name={name} content={content} testClick={() => testAction("Action test worked!")}/>
+            <Retreat
+              name={name}
+              content={content}
+              testClick={() => testAction("Action test worked!")}
+            />
         </div>
     );
 };
@@ -16,7 +20,8 @@ let RetreatContainer = ({ name, testAction, content }) => {
 RetreatContainer.propTypes = {
     name: PropTypes.string,
     content: PropTypes.string,
-    testAction: PropTypes.func
+    testAction: PropTypes.func,
+
 };
 
 const mapStateToProps = state => {
@@ -29,7 +34,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         testAction: content => {
-            dispatch(test(content))
+            dispatch(test(content));
         }
     };
 };

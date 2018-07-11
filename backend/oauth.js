@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../sequelize/models');
+const { Member } = require('../sequelize/models');
 const bcrypt = require('bcryptjs');
 let hashedPassword;
 
@@ -14,17 +14,20 @@ module.exports = passport => {
         failureRedirect: '/'
     }));
 
-    router.get('/callback/kakao', passport.authenticate('kakao', {
-        failureRedirect: '/'
-    }));
+    router.get('/callback/kakao',
+          passport.authenticate('kakao'),
+          (req, res) => {
+            res.send("successfully loggedIn");
+          }
+    );
 
     router.post('/register', (req, res) => {
-        User.findAll({where: {username: req.body.username}})
-        .then(users => {
-            if(req.body.password === req.body.repeatPassword && !users[0]) {
+        Member.findAll({where: {username: req.body.username}})
+        .then(members => {
+            if(req.body.password === req.body.repeatPassword && !members[0]) {
                 bcrypt.hash(req.body.password, process.env.SALT, (err, hash) => {
                     hashedPassword = hash;
-                    User.create({
+                    Member.create({
                         username: req.body.username,
                         password: hashedPassword
                     })

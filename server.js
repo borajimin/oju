@@ -8,7 +8,7 @@ const LocalStrategy = require('passport-local');
 const KakaoStrategy = require('passport-kakao');
 //const LineStrategy = require('passport-line');
 const bcrypt = require('bcryptjs');
-const { User } = require('./sequelize/models');
+const { Member } = require('./sequelize/models');
 const PORT = process.env.PORT || 3000;
 const oauth = require('./backend/oauth');
 const api = require('./backend/routes');
@@ -32,13 +32,13 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
     //FIGURE OUT A WAY TO HANDLE BOTH KAKAO AND LOCAL USERS
-    User.findOne({where: {id: id}})
+    Member.findOne({where: {id: id}})
     .then(user => done(null, user.dataValues))
     .catch((err) => {throw new Error(err);});
 });
 
 passport.use(new LocalStrategy((username, password, done) => {
-    User.findOne({where: {username: username}})
+    Member.findOne({where: {username: username}})
       .then( (user) => {
           if(user) {
               bcrypt.compare(password, user.dataValues.password, (err, res) => {
@@ -60,7 +60,7 @@ passport.use(new KakaoStrategy({
         clientSecret: process.env.KakaoClientSecret,
         callbackURL: process.env.KakaoCallbackURL
     }, function(accessToken, refreshToken, profile, done){
-        User.findOrCreate({
+        Member.findOrCreate({
             where: {
                 id: profile.id,
                 username: profile.username,

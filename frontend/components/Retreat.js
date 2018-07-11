@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Retreat = ({ name, content, testClick}) => {
+const Retreat = ({ name, content, testClick }) => {
     return (
         <div>
             <h1>{name}</h1>
